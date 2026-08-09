@@ -1,0 +1,5 @@
+Market,Target,OOS R2 with MRI (%),OOS R2 without MRI (%),Gain (pp),N forecasts
+CSI 300,Excess return,0.8,-9.9,10.7,188
+CSI 300,Volatility,53.77,54.38,-0.61,188
+S&P 500,Excess return,-12.84,-9.06,-3.79,347
+S&P 500,Volatility,46.75,50.12,-3.37,347
