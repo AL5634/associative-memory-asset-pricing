@@ -1,0 +1,68 @@
+==========================================================================================
+ROBUSTNESS (DAILY): CSI 300, MRI -> next-trading-day excess return, HAC-21, controls: R, sigma, E/P, B/M
+==========================================================================================
+  Baseline                                     b=-0.008452  t=-4.71  adjR2=0.720%  N=5039
+
+[R1] Influence of individual observations (one-step PRESS identity)
+  leave-one-out t range: [-4.88, -4.54]  (baseline -4.71)
+  drop 5 most favourable days                  b=-0.007142  t=-4.05  adjR2=0.652%  N=5034
+  drop 10 most favourable days                 b=-0.006098  t=-3.60  adjR2=0.595%  N=5029
+  drop 20 most favourable days                 b=-0.004224  t=-2.48  adjR2=0.597%  N=5019
+  drop 100 most favourable days                b=+0.005801  t=+2.83  adjR2=1.241%  N=4939
+  greedy removal of 5 most influential days    b=-0.008770  t=-4.91  adjR2=0.836%  N=5034
+  greedy removal of 10 most influential days   b=-0.008528  t=-4.75  adjR2=0.878%  N=5029
+  greedy removal of 16 most influential days   b=-0.008437  t=-4.72  adjR2=0.921%  N=5023
+
+[R2] Excluding crisis episodes (calendar years, daily)
+  exclude 2008                                 b=-0.007128  t=-3.53  adjR2=0.609%  N=4793
+  exclude 2015-2016                            b=-0.008764  t=-4.82  adjR2=0.816%  N=4551
+  exclude 2008, 2015, 2016                     b=-0.007843  t=-3.60  adjR2=0.892%  N=4305
+  exclude 2008, 2015, 2016, 2020, 2022         b=-0.007608  t=-3.40  adjR2=0.885%  N=3820
+  exclude top-decile sigma_t days              b=-0.007321  t=-3.04  adjR2=0.840%  N=4528
+
+[R3] Winsorizing the dependent variable
+  winsorized at 1%                             b=-0.007928  t=-4.67  adjR2=0.816%  N=5039
+  winsorized at 5%                             b=-0.006204  t=-4.48  adjR2=0.959%  N=5039
+
+[R4] Subsample stability (daily)
+  first half                                   b=-0.008051  t=-3.37  adjR2=1.102%  N=2489
+  second half                                  b=-0.005295  t=-1.50  adjR2=0.348%  N=2550
+  2005-2011                                    b=-0.007893  t=-3.11  adjR2=0.992%  N=1396
+  2011-2017                                    b=-0.007570  t=-1.27  adjR2=0.548%  N=1458
+  2017-2025                                    b=-0.013139  t=-2.97  adjR2=0.601%  N=1943
+
+  recursive expanding-origin beta (every 24 months -> 504 days):
+    through 2011-03-28: b=-0.007827 t=-3.11
+    through 2013-04-24: b=-0.007565 t=-3.20
+    through 2015-05-22: b=-0.007391 t=-3.26
+    through 2017-06-16: b=-0.008970 t=-4.12
+    through 2019-07-10: b=-0.009282 t=-4.60
+    through 2021-08-04: b=-0.008821 t=-4.61
+    through 2023-08-31: b=-0.008970 t=-4.83
+    through 2025-09-29: b=-0.008504 t=-4.73
+
+[R5] Placebo: circular block bootstrap of MRI (block=12m -> 252 days, 2000 reps)
+  |t| 90th=1.80  95th=2.19  99th=2.85  observed=4.71  p=0.0000
+
+[R6] Alternative dependent variables (daily)
+  raw (not excess) next-day return             b=-0.008469  t=-4.73  adjR2=0.718%  N=5039
+  skip-one-day-ahead return                    b=-0.007332  t=-4.17  adjR2=0.549%  N=5038
+  next-5-trading-day return                    b=-0.014120  t=-2.12  adjR2=19.155%  N=5039
+
+[R7] Look-ahead audit: MRI delayed further
+  MRI lagged 12 months (252 days)              b=+0.002438  t=+1.90  adjR2=0.242%  N=4848
+  MRI lagged 21 day                            b=-0.003144  t=-2.70  adjR2=0.285%  N=5039
+
+[R8] Does MRI merely proxy a contemporaneous drawdown?
+  add low-return and high-vol dummies          b=-0.008281  t=-4.35  adjR2=0.732%  N=5039
+  add squared R and sigma                      b=-0.009028  t=-3.77  adjR2=0.855%  N=5039
+  add R x sigma interaction                    b=-0.008791  t=-4.25  adjR2=0.705%  N=5039
+
+==========================================================================================
+US MIRROR (same tests, S&P 500, daily)
+==========================================================================================
+  US: baseline                                 b=-0.000723  t=-0.86  adjR2=0.965%  N=8564
+  US: exclude 2008-2009                        b=-0.000486  t=-0.63  adjR2=0.628%  N=8059
+  US: exclude 2020                             b=-0.000316  t=-0.37  adjR2=0.658%  N=8311
+  US: first half                               b=-0.002238  t=-1.06  adjR2=0.036%  N=4282
+  US: second half                              b=-0.001868  t=-1.30  adjR2=2.561%  N=4282
