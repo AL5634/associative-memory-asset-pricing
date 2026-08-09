@@ -1,0 +1,55 @@
+======================================================================================
+TEST A (DAILY) — Flexible-control specification
+======================================================================================
+Adding decile dummies of R_t and sigma_t, then splines, to the
+full-control daily return regression.
+
+  A1: + R_t decile dummies  MRI b=-0.007522  t=-3.38  p=0.0007  adjR2=0.890%
+  A1: + sigma_t decile dummies  MRI b=-0.009164  t=-4.39  p=0.0000  adjR2=0.955%
+  A2: + both decile dummies   MRI b=-0.008469  t=-3.26  p=0.0011  adjR2=1.128%
+  A3: + R + sigma splines      MRI b=-0.007817  t=-2.95  p=0.0031  adjR2=1.071%
+  A4: + splines + MRIxR/S     MRI b=-0.007626  t=-1.66  p=0.0966  adjR2=1.036%
+
+  US A2: + both decile dummies  MRI b=+0.000736  t=+0.74
+
+======================================================================================
+TEST B (DAILY) — Random-anchor placebo
+======================================================================================
+Replace each real crash anchor with a random (R, sigma) coordinate
+drawn from the empirical distribution of the cue vector, rebuild MRI,
+re-estimate the full daily return regression. 500 replications.
+
+  23 real anchors, 5101 candidate cue points in the daily panel
+  Daily sample N = 5101
+  True MRI t-statistic: -4.71
+
+  replication 100/500
+  replication 200/500
+  replication 300/500
+  replication 400/500
+
+  500 replications complete.
+  Placebo t mean = -0.282   SD = 0.501
+  Placebo |t| distribution:
+    90th pctile = 0.95
+    95th pctile = 1.16
+    99th pctile = 1.55
+  True |t| = 4.71
+  Empirical p-value = <1/500
+
+======================================================================================
+TEST C (DAILY) — Orthogonalised MRI
+======================================================================================
+Step 1: regress MRI on R_t, sigma_t, splines, interaction.
+Step 2: test whether the residual predicts Future_ExRet.
+
+  R²  MRI on flexible R, sigma: 0.9557
+  sd(MRI) = 0.1742  sd(residual) = 0.0367
+  fraction of MRI variance orthogonal to (R,σ): 4.43%
+
+  Residual MRI alone:  b=-0.001632  t=-0.13  p=0.9001  adjR2=0.121%
+  -> FAILS. MRI adds nothing beyond flexible (R, σ) control.
+  Residual MRI alone:  b=-0.000270  t=-0.02  p=0.9844  adjR2=0.150%
+  -> FAILS. MRI adds nothing beyond flexible (R, σ) control.
+
+  US residual MRI:  b=+0.000786  t=+0.84  p=0.4017
