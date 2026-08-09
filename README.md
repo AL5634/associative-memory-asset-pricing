@@ -1,7 +1,7 @@
 ©️Liu Xiaoquan, Assistant Professor and Program director BBA in Finance,Hong Kong Chu Hai College ;Offshore Fund Director,Shanghai AJ Group
 
 Paper: "Associative Memory, Path-Dependent Beliefs, and Asset Pricing
-Dynamics: A Deep Learning Approach" (Economic Modelling submission)
+Dynamics: A Deep Learning Approach" 
 
 Reproducibility
 ---------------
