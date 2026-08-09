@@ -65,5 +65,3 @@ Reproducibility
 3. Daily identification test B uses rng seed 20260807; placebo distribution
    reproducible (mean -0.282, sd 0.501, |t| 99th pctile 1.55, p<1/500).
    All results committed and hash-verified.
-4. The submission zips (EM_submission_daily_v3.zip and
-   EM_code_data_deposit_daily_v3.zip) contain the same code and data.
